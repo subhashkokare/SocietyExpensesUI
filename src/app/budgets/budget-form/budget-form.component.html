@@ -1,10 +1,6 @@
 <h4 class="mb-3">{{ id ? 'Edit' : 'Create' }} Budget</h4>
 
-    <form (ngSubmit)="save()" #f="ngForm">
-        <!-- <div class="col-md-2">
-          <label class="form-label">Year</label>
-          <input type="number" name="year" class="form-control" [(ngModel)]="model.year" required />
-        </div> -->
+    <form (ngSubmit)="save()" #f="ngForm">       
       <div class="row g-2">
         <div class="col-md-2">
           <label class="form-label">Year</label>
