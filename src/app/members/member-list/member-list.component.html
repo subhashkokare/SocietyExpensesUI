@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between mb-3">
+      <h4>Members</h4>
+      <button class="btn btn-primary btn-sm" (click)="create()">Create</button>
+    </div>
+
+    <input class="form-control mb-2" placeholder="Search" [(ngModel)]="q" (input)="applyFilter()" />
+
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Flat</th>
+          <th>Type</th>
+          <th>Active</th>
+          <th>Join Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of filtered">
+          <td>{{ m.fullName }}</td>
+          <td>{{ m.email }}</td>
+          <td>{{ m.phone }}</td>
+          <td>{{ m.flatNumber }}</td>
+          <td>{{ m.memberType }}</td>
+          <td>{{ m.isActive ? 'Yes' : 'No' }}</td>
+          <td>{{ m.joinDate | date }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-1" (click)="edit(m.memberId)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="remove(m.memberId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>

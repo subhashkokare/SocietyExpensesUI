@@ -1,0 +1,27 @@
+<h4>{{ id ? 'Edit' : 'Create' }} Member</h4>
+    <form (ngSubmit)="save()">
+      <div class="mb-3"><label>Name</label>
+        <input class="form-control" [(ngModel)]="model.fullName" name="fullName" required />
+      </div>
+      <div class="mb-3"><label>Email</label>
+        <input class="form-control" [(ngModel)]="model.email" name="email" />
+      </div>
+      <div class="mb-3"><label>Phone</label>
+        <input class="form-control" [(ngModel)]="model.phone" name="phone" />
+      </div>
+      <div class="mb-3"><label>Flat Number</label>
+        <input class="form-control" [(ngModel)]="model.flatNumber" name="flatNumber" />
+      </div>
+      <div class="mb-3"><label>Member Type</label>
+        <input class="form-control" [(ngModel)]="model.memberType" name="memberType" />
+      </div>
+      <div class="mb-3"><label>Join Date</label>
+        <input type="date" class="form-control" [(ngModel)]="model.joinDate" name="joinDate" />
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="model.isActive" name="isActive" />
+        <label class="form-check-label">Active</label>
+      </div>
+      <button class="btn btn-success">Save</button>
+      <a class="btn btn-secondary ms-2" [routerLink]="['/members']">Cancel</a>
+    </form>

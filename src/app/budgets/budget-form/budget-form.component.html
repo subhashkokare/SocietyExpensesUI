@@ -1,0 +1,25 @@
+<h4 class="mb-3">{{ id ? 'Edit' : 'Create' }} Budget</h4>
+
+    <form (ngSubmit)="save()" #f="ngForm">
+      <div class="row g-2">
+        <div class="col-md-2">
+          <label class="form-label">Year</label>
+          <input type="number" name="year" class="form-control" [(ngModel)]="model.year" required />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Category</label>
+          <input name="category" class="form-control" [(ngModel)]="model.category" required />
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Amount</label>
+          <input type="number" name="amount" class="form-control" [(ngModel)]="model.amount" required />
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <button class="btn btn-success" [disabled]="!f.form.valid">{{ id ? 'Update' : 'Create' }}</button>
+        <a class="btn btn-secondary ms-2" [routerLink]="['/budgets']">Cancel</a>
+      </div>
+    </form>

@@ -1,0 +1,39 @@
+<div class="card">
+      <div class="card-body">
+        <h5>{{ isEdit ? 'Edit Expense' : 'Create Expense' }}</h5>
+        <form (ngSubmit)="save()" #f="ngForm">
+          <div class="row">
+            <div class="col-md-4 mb-2"><input name="category" class="form-control" placeholder="Category" [(ngModel)]="model.category" required /></div>
+            <div class="col-md-3 mb-2"><input type="date" name="date" class="form-control" [(ngModel)]="model.date" required /></div>
+            <div class="col-md-3 mb-2"><input type="number" name="amount" class="form-control" placeholder="Amount" [(ngModel)]="model.amount" required /></div>
+            <div class="col-md-2 mb-2"><input name="paymentMode" class="form-control" placeholder="Payment" [(ngModel)]="model.paymentMode" /></div>
+
+            <div class="col-12 mb-2">
+              <input name="description" class="form-control" placeholder="Description" [(ngModel)]="model.description" />
+            </div>
+
+            <div class="col-12 mb-2">
+              <label>Attachment</label>
+              <input type="file" (change)="onFileChange($event)" />
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">{{ isEdit ? 'Update' : 'Create' }}</button>
+              <button class="btn btn-secondary ms-2" type="button" (click)="cancel()">Cancel</button>
+            </div>
+          </div>
+        </form>
+
+        <hr />
+
+        <div *ngIf="attachments?.length">
+          <h6>Attachments</h6>
+          <ul class="list-unstyled">
+            <li *ngFor="let a of attachments">
+              {{ a.fileName }} ({{ a.sizeBytes | fileSize }})
+              <button class="btn btn-sm btn-outline-danger ms-2" (click)="deleteAttachment(a.attachmentId)">Delete</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>

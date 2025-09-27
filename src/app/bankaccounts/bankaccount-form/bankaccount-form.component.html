@@ -1,0 +1,21 @@
+<h4>{{ id ? 'Edit' : 'Create' }} Bank Account</h4>
+    <form (ngSubmit)="save()">
+      <div class="mb-3"><label>Bank Name</label>
+        <input class="form-control" [(ngModel)]="model.bankName" name="bankName" required />
+      </div>
+      <div class="mb-3"><label>Account Number (masked)</label>
+        <input class="form-control" [(ngModel)]="model.accountNumberMasked" name="accountNumberMasked" />
+      </div>
+      <div class="mb-3"><label>IFSC</label>
+        <input class="form-control" [(ngModel)]="model.ifsc" name="ifsc" />
+      </div>
+      <div class="mb-3"><label>Balance</label>
+        <input type="number" class="form-control" [(ngModel)]="model.balance" name="balance" />
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="model.isActive" name="isActive" />
+        <label class="form-check-label">Active</label>
+      </div>
+      <button class="btn btn-success">Save</button>
+      <a class="btn btn-secondary ms-2" [routerLink]="['/bankaccounts']">Cancel</a>
+    </form>

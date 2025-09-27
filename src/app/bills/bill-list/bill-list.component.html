@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between mb-3">
+      <h4>Bills</h4>
+      <button class="btn btn-primary btn-sm" (click)="create()">Create</button>
+    </div>
+
+    <input class="form-control mb-2" placeholder="Search by status" [(ngModel)]="q" (input)="applyFilter()" />
+
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Member</th>
+          <th>Period</th>
+          <th>Due</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of filtered">
+          <td>{{ b.memberId }}</td>
+          <td>{{ b.periodStart | date }} - {{ b.periodEnd | date }}</td>
+          <td>{{ b.dueDate | date }}</td>
+          <td>{{ b.amount | number:'1.2-2' }}</td>
+          <td>{{ b.status }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-1" (click)="edit(b.billId)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="remove(b.billId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>

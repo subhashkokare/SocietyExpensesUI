@@ -1,0 +1,8 @@
+/* src/styles.css */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "startbootstrap-sb-admin-2/css/sb-admin-2.min.css";
+
+/* small overrides */
+body { background: #f8f9fc; }
+

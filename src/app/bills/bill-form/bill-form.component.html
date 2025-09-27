@@ -1,0 +1,25 @@
+<h4>{{ id ? 'Edit' : 'Create' }} Bill</h4>
+    <form (ngSubmit)="save()">
+      <div class="mb-3"><label>Member</label>
+        <select class="form-select" [(ngModel)]="model.memberId" name="memberId" required>
+          <option *ngFor="let m of members" [value]="m.memberId">{{ m.fullName }} ({{ m.flatNumber }})</option>
+        </select>
+      </div>
+      <div class="mb-3"><label>Period Start</label>
+        <input type="date" class="form-control" [(ngModel)]="model.periodStart" name="periodStart" />
+      </div>
+      <div class="mb-3"><label>Period End</label>
+        <input type="date" class="form-control" [(ngModel)]="model.periodEnd" name="periodEnd" />
+      </div>
+      <div class="mb-3"><label>Due Date</label>
+        <input type="date" class="form-control" [(ngModel)]="model.dueDate" name="dueDate" />
+      </div>
+      <div class="mb-3"><label>Amount</label>
+        <input type="number" class="form-control" [(ngModel)]="model.amount" name="amount" />
+      </div>
+      <div class="mb-3"><label>Status</label>
+        <input class="form-control" [(ngModel)]="model.status" name="status" />
+      </div>
+      <button class="btn btn-success">Save</button>
+      <a class="btn btn-secondary ms-2" [routerLink]="['/bills']">Cancel</a>
+    </form>

@@ -1,0 +1,117 @@
+<!-- Show full shell only if authenticated -->
+<ng-container *ngIf="auth.isAuthenticated(); else publicArea">
+  <div id="page-top">
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="bi bi-building"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">Society <sup>Mgmt</sup></div>
+        </a>
+
+        <hr class="sidebar-divider my-0" />
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">
+            <i class="bi bi-speedometer2 me-2"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/expenses">
+            <i class="bi bi-list-ul me-2"></i>
+            <span>Expenses</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/members">
+            <i class="bi bi-people"></i>
+            <span>Members</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/vendors">
+            <i class="bi bi-building"></i>
+            <span>Vendors</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/bankaccounts">
+            <i class="bi bi-bank"></i>
+            <span>Bank Accounts</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/bills">
+            <i class="bi bi-receipt"></i>
+            <span>Bills</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/budgets">
+            <i class="bi bi-cash"></i>
+            <span>Budgets</span>
+          </a>
+        </li>
+
+
+        <hr class="sidebar-divider d-none d-md-block" />
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <div class="container-fluid">
+              <span class="navbar-brand fw-bold">{{ societyName }}</span>
+              <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle me-3" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+              </button>
+
+              <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                  <div class="d-flex align-items-center">
+                    <span class="me-3 text-gray-600 small">Hi, {{ displayName() }}</span>
+                    <button class="btn btn-outline-secondary btn-sm" (click)="logout()">Logout</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Routed Pages -->
+          <div class="container-fluid">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white mt-auto">
+          <div class="container my-auto">
+            <div class="text-center my-auto py-3">
+              <span>© Society Expenses 2025</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Wrapper -->
+  </div>
+</ng-container>
+
+<!-- Public (login, register, forgot password, etc.) -->
+<ng-template #publicArea>
+  <div class="container mt-4">
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>

@@ -1,0 +1,81 @@
+<h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
+
+<div class="row mb-4">
+  <div class="col-md-4 mb-3">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col me-2">
+            <div class="text-xs fw-bold text-primary text-uppercase mb-1">
+              Total Expenses
+            </div>
+            <div class="h5 mb-0 fw-bold text-gray-800">₹{{ totalExpenses }}</div>
+          </div>
+          <div class="col-auto">
+            <i class="bi bi-currency-rupee fs-3 text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col me-2">
+            <div class="text-xs fw-bold text-success text-uppercase mb-1">
+              Expense Count
+            </div>
+            <div class="h5 mb-0 fw-bold text-gray-800">{{ expenseCount }}</div>
+          </div>
+          <div class="col-auto">
+            <i class="bi bi-list-ul fs-3 text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col me-2">
+            <div class="text-xs fw-bold text-info text-uppercase mb-1">
+              Attachments
+            </div>
+            <div class="h5 mb-0 fw-bold text-gray-800">{{ attachmentCount }}</div>
+          </div>
+          <div class="col-auto">
+            <i class="bi bi-paperclip fs-3 text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Expenses -->
+<h4 class="mb-3">Recent Expenses</h4>
+
+<table class="table table-hover align-middle shadow-sm">
+  <thead class="table-light">
+    <tr>
+      <th>Category</th>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>Attachments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of recentExpenses">
+      <td>{{ e.category }}</td>
+      <td>{{ e.date | date:'mediumDate' }}</td>
+      <td>₹{{ e.amount }}</td>
+      <td>{{ e.description }}</td>
+      <td>{{ e.attachments?.length ?? 0 }}</td>
+    </tr>
+  </tbody>
+</table>

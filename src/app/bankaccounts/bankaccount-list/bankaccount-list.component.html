@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between mb-3">
+      <h4>Bank Accounts</h4>
+      <button class="btn btn-primary btn-sm" (click)="create()">Create</button>
+    </div>
+
+    <input class="form-control mb-2" placeholder="Search by bank" [(ngModel)]="q" (input)="applyFilter()" />
+
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Bank</th>
+          <th>Account</th>
+          <th>IFSC</th>
+          <th>Balance</th>
+          <th>Active</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of filtered">
+          <td>{{ b.bankName }}</td>
+          <td>{{ b.accountNumberMasked }}</td>
+          <td>{{ b.ifsc }}</td>
+          <td>{{ b.balance | number:'1.2-2' }}</td>
+          <td>{{ b.isActive ? 'Yes' : 'No' }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-1" (click)="edit(b.bankAccountId)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="remove(b.bankAccountId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>

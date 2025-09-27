@@ -1,0 +1,23 @@
+<h4>{{ id ? 'Edit' : 'Create' }} Vendor</h4>
+    <form (ngSubmit)="save()">
+      <div class="mb-3"><label>Name</label>
+        <input class="form-control" [(ngModel)]="model.name" name="name" required />
+      </div>
+      <div class="mb-3"><label>Contact Person</label>
+        <input class="form-control" [(ngModel)]="model.contactPerson" name="contactPerson" />
+      </div>
+      <div class="mb-3"><label>Phone</label>
+        <input class="form-control" [(ngModel)]="model.phone" name="phone" />
+      </div>
+      <div class="mb-3"><label>Email</label>
+        <input class="form-control" [(ngModel)]="model.email" name="email" />
+      </div>
+      <div class="mb-3"><label>Address</label>
+        <textarea class="form-control" [(ngModel)]="model.address" name="address"></textarea>
+      </div>
+      <div class="mb-3"><label>GSTIN</label>
+        <input class="form-control" [(ngModel)]="model.gstin" name="gstin" />
+      </div>
+      <button class="btn btn-success">Save</button>
+      <a class="btn btn-secondary ms-2" [routerLink]="['/vendors']">Cancel</a>
+    </form>

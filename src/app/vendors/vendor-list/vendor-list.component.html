@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between mb-3">
+      <h4>Vendors</h4>
+      <button class="btn btn-primary btn-sm" (click)="create()">Create</button>
+    </div>
+
+    <input class="form-control mb-2" placeholder="Search" [(ngModel)]="q" (input)="applyFilter()" />
+
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>GSTIN</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of filtered">
+          <td>{{ v.name }}</td>
+          <td>{{ v.contactPerson }}</td>
+          <td>{{ v.phone }}</td>
+          <td>{{ v.email }}</td>
+          <td>{{ v.gstin }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-1" (click)="edit(v.vendorId)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="remove(v.vendorId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
